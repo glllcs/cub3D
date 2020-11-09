@@ -13,7 +13,7 @@
 
 NAME			= cub3D
 
-MINILIBX_DIR	= minilibx
+MINILIBX_DIR	= lib/minilibx
 
 SDIR			= ./studies
 _SRC			= learning.c color.c shapes.c hooks.c
@@ -34,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "\n\033[0;33mCompiling..."
-	$(CC) -o $(NAME) -L $(MINILIBX_DIR) $(LXFLAGS) $(OBJ)
+	$(CC) -o $(NAME) -L $(MINILIBX_DIR) $(OBJ)
 	@echo "\033[0m"
 	#ar rcs $@ $^
 	#ranlib $@
