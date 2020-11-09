@@ -4,31 +4,31 @@
 #include <math.h>
 #include <stdio.h>
 
-# define HOOK_KEY_DOWN		125
-# define HOOK_KEY_UP		126
-# define HOOK_KEY_LEFT		123
-# define HOOK_KEY_RIGHT		124
+# define KEY_ARROW_DOWN		125
+# define KEY_ARROW_UP		126
+# define KEY_ARROW_LEFT		123
+# define KEY_ARROW_RIGHT	124
 
-# define HOOK_ENTER			36
-# define HOOK_BACKSPACE		51
-# define HOOK_SPACE			49
-# define HOOK_ESC			53
+# define KEY_ENTER			36
+# define KEY_BACKSPACE		51
+# define KEY_SPACE			49
+# define KEY_ESC			53
 
-# define HOOK_1				18
-# define HOOK_2				19
-# define HOOK_3				20
-# define HOOK_4				21
-# define HOOK_5				23
-# define HOOK_6				22
-# define HOOK_7				26
-# define HOOK_8				28
-# define HOOK_9				25
-# define HOOK_0				29
+# define KEY_1				18
+# define KEY_2				19
+# define KEY_3				20
+# define KEY_4				21
+# define KEY_5				23
+# define KEY_6				22
+# define KEY_7				26
+# define KEY_8				28
+# define KEY_9				25
+# define KEY_0				29
 
-# define HOOK_A				0
-# define HOOK_S				1
-# define HOOK_D				2
-# define HOOK_W				13
+# define KEY_A				0
+# define KEY_S				1
+# define KEY_D				2
+# define KEY_W				13
 
 
 typedef struct  s_data {
