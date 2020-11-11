@@ -1,6 +1,7 @@
 #ifndef LEARNING_H
 # define LEARNING_H
-#include <mlx.h>
+#include "mlx.h"
+#include "mlx_int.h"
 #include <math.h>
 #include <stdio.h>
 

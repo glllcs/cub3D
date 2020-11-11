@@ -15,6 +15,9 @@ NAME			= cub3D
 
 MINILIBX_DIR	= lib/minilibx
 
+INC		= /usr/include/
+INCLIB		= $(INC)/../lib
+
 SDIR			= ./studies
 _SRC			= learning.c color.c shapes.c hooks.c
 
@@ -25,7 +28,7 @@ OBJ				= $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 
 CC				= gcc
 C_FLAGS			= -Wall -Wextra #-Werror
-LXFLAGS			= -lmlx -framework OpenGL -framework AppKit
+LXFLAGS			= -lmlx -L$(INCLIB) -lXext -lX11 -lm -lbsd 
 
 
 .PHONY: all clean fclean re run norm 
