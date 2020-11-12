@@ -10,27 +10,39 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= cub3D
+NAME		= learning 
 
-LIB_DIR		= ./lib
+LIB_DIR		= ../lib
 
 MLX_DIR		= $(LIB_DIR)/minilibx
 MLX		= $(MLX_DIR)/libmlx_Linux.a
 
-INC		= /usr/include/
-INCLIB		= $(INC)/../lib
+INCLUDE		= learning.h
 
-SDIR			= ./studies
-_SRC			= learning.c color.c shapes.c hooks.c
+_SRC		= learning.c \
+		  color.c \
+		  shapes.c \
+		  hooks.c
 
-SRC				= $(addprefix $(SDIR)/,$(_SRC))
+SDIR		= .
+SRC		= $(addprefix $(SDIR)/,$(_SRC))
 
-ODIR			= ./obj
-OBJ				= $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
+ODIR		= ./obj
+OBJ		= $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 
-CC				= gcc
-C_FLAGS			= -Wall -Wextra #-Werror
-LXFLAGS			= -lmlx -L$(INCLIB) -lXext -lX11 -lm -lbsd 
+CC		= gcc
+C_FLAGS		= -Wextra \
+		  -Wall \
+		  #-Werror
+
+
+LXFLAGS		= -L$(MLX_DIR) \
+		  -lmlx \
+		  -lXext \
+		  -lmlx_Linux \
+		  -lX11 \
+		  -lm \
+		  -lbsd
 
 
 .PHONY: all clean fclean re run norm 
@@ -39,14 +51,17 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "\n\033[0;33mCompiling..."
-	$(CC) -o $(NAME) -L $(MINILIBX_DIR) $(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(LXFLAGS)
 	@echo "\033[0m"
 	#ar rcs $@ $^
 	#ranlib $@
 
-$(ODIR)/%.o : $(SDIR)/%.c 
+$(ODIR)/%.o : $(SDIR)/%.c $(MLX)
 	mkdir -p $(ODIR)
-	$(CC) $(C_FLAGS) -c $< -o $@ -I $(MINILIBX_DIR)
+	$(CC) $(C_FLAGS) -c $< -o $@ -I$(MLX_DIR)
+
+$(MLX):
+	$(MAKE) -C $(MLX_DIR)
 
 run: $(NAME)
 	./$(NAME)
@@ -54,6 +69,7 @@ run: $(NAME)
 clean:
 	rm -f $(OBJ)
 	rm -rf $(ODIR)
+	make -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)

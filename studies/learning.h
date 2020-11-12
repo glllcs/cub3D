@@ -1,7 +1,6 @@
 #ifndef LEARNING_H
 # define LEARNING_H
 #include "mlx.h"
-#include "mlx_int.h"
 #include <math.h>
 #include <stdio.h>
 
@@ -10,26 +9,26 @@
 # define KEY_ARROW_LEFT		123
 # define KEY_ARROW_RIGHT	124
 
-# define KEY_ENTER			36
-# define KEY_BACKSPACE		51
-# define KEY_SPACE			49
-# define KEY_ESC			53
+# define KEY_ENTER		65293
+# define KEY_BACKSPACE		65288
+# define KEY_SPACE		32
+# define KEY_ESC		65307
 
-# define KEY_1				18
-# define KEY_2				19
-# define KEY_3				20
-# define KEY_4				21
-# define KEY_5				23
-# define KEY_6				22
-# define KEY_7				26
-# define KEY_8				28
-# define KEY_9				25
-# define KEY_0				29
+# define KEY_1			49
+# define KEY_2			50
+# define KEY_3			51
+# define KEY_4			52
+# define KEY_5			53
+# define KEY_6			54
+# define KEY_7			55
+# define KEY_8			56
+# define KEY_9			57
+# define KEY_0			48
 
-# define KEY_A				0
-# define KEY_S				1
-# define KEY_D				2
-# define KEY_W				13
+# define KEY_A			97
+# define KEY_S			115
+# define KEY_D			100
+# define KEY_W			119
 
 
 typedef struct  s_data {
@@ -43,7 +42,7 @@ typedef struct  s_data {
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
-}				t_vars;
+}		t_vars;
 
 
 int		create_trgb(int t, int r, int g, int b);
@@ -59,6 +58,6 @@ void  	make_circle(t_data *img, int x_center, int y_center, int radius);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		key_hook(int keycode, t_vars *vars);
 int		mouse_hook(int button, int x, int y, t_vars *vars);
-int		close(int keycode, t_vars *vars);
+//int		close(int keycode, t_vars *vars);
 
 #endif

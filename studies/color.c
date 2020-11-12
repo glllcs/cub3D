@@ -43,5 +43,5 @@ int		add_shade(double distance, int color)
 
 int		get_opposite (int color)
 {
-	return (get_t(color) << 24 | 0xFFFFFF - get_rgb(color));
+	return (get_t(color) << 24 | (0xFFFFFF - get_rgb(color)));
 }
