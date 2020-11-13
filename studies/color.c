@@ -45,3 +45,21 @@ int		get_opposite (int color)
 {
 	return (get_t(color) << 24 | (0xFFFFFF - get_rgb(color)));
 }
+
+int		color_map_1(t_vars *vars, int w, int h)
+{
+	int	x;
+	int	y;
+	int	color;
+
+	x = w;
+	while (x--)
+	{
+		y = h;
+		while (y--)
+		{
+			color = (x*255)/w+((((w-x)*255)/w)<<16)+(((y*255)/h)<<8);
+			mlx_pixel_put(vars->mlx,vars->win,x,y,color);
+		}
+	}
+}

@@ -9,10 +9,10 @@
 # define KEY_ARROW_LEFT		123
 # define KEY_ARROW_RIGHT	124
 
-# define KEY_ENTER		65293
-# define KEY_BACKSPACE		65288
+# define KEY_ENTER		0xFF0D
+# define KEY_BACKSPACE		0xFF08
 # define KEY_SPACE		32
-# define KEY_ESC		65307
+# define KEY_ESC		0xFF1B
 
 # define KEY_1			49
 # define KEY_2			50
@@ -59,5 +59,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		key_hook(int keycode, t_vars *vars);
 int		mouse_hook(int button, int x, int y, t_vars *vars);
 //int		close(int keycode, t_vars *vars);
+int		color_map_1(t_vars *vars, int w, int h);
 
 #endif
