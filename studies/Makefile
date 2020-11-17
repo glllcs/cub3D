@@ -39,8 +39,8 @@ C_FLAGS		= -Wextra \
 LXFLAGS		= -L$(MLX_DIR) \
 		  -lmlx \
 		  -lXext \
-		  -lmlx_Linux \
 		  -lX11 \
+		  -lmlx_Linux \
 		  -lm \
 		  -lbsd
 

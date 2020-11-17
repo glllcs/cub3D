@@ -18,6 +18,11 @@ int main(void)
 {
 	t_vars	vars;
 	t_data  img;
+	t_data	img2;
+	char	*data1;
+	int	bpp1;
+	int	sl1;
+	int	endian1;
 	
 	if (!(vars.mlx = mlx_init()))
 	{
@@ -31,14 +36,22 @@ int main(void)
 		exit(1);
 	}
 
-	img.img = mlx_new_image(vars.mlx, IM1_SX, IM1_SY);
+	if (!(img.img = mlx_new_image(vars.mlx, IM1_SX, IM1_SY)))
+	{
+		printf("KO!!!"\n);
+		exit(1);
+	}
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	make_square(&img,200,100,300);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	sleep(2);
 
 	mlx_destroy_image(vars.mlx, img.img);
-	img.img = mlx_new_image(vars.mlx, IM1_SX, IM1_SY);
+	if (!(img.img = mlx_new_image(vars.mlx, IM1_SX, IM1_SY)))
+	{
+		printf("KO!!!!"\n);
+		exit(1);
+	}
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	make_circle(&img,200,100,100);
@@ -47,6 +60,14 @@ int main(void)
 	mlx_clear_window(vars.mlx,vars.win);
 	color_map_1(&vars, WIN1_SX, WIN1_SY);
 	sleep(2);
+
+	if(!(img2.img = mlx_new_image(vars.mlx, IM1_SX, IM1_SY)))
+	{
+		printf("KO!!!!!"\n);
+		exit(1);
+	}
+	data1 = mlx_get_data_addr(img2.img, &bpp1, &sl1, &endian1);
+
 
 	mlx_key_hook(vars.win, key_hook, &vars);
 	//mlx_mouse_hook(vars.win, mouse_hook, &vars);
